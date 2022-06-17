@@ -1,0 +1,48 @@
+.card {
+  .title {
+    max-width: 20rem;
+    text-align: center;
+  }
+
+  img {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .overview {
+    max-width: 20rem;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .rating {
+      font-size: 1rem;
+      display: flex;
+      gap: 0.3rem;
+      align-items: center;
+
+      .star {
+        color: #e2b616;
+        font-size: 1.6rem;
+      }
+
+      .average {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .release-date {
+      font-weight: 500;
+    }
+  }
+}

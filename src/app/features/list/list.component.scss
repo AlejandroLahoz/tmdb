@@ -1,0 +1,21 @@
+.list-card {
+  max-width: fit-content;
+  width: 80%;
+  margin: 5rem auto 0 auto;
+
+  .list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 3rem;
+
+    .element {
+      transition: transform 100ms;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}

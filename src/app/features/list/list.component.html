@@ -1,0 +1,9 @@
+<div class="list-card">
+  <div class="list">
+    <app-card
+      class="element"
+      *ngFor="let element of movieList$ | async"
+      [movie]="element"
+    ></app-card>
+  </div>
+</div>
