@@ -1,4 +1,12 @@
-<div class="list-card">
+<div class="list-wrapper">
+  <mat-button-toggle-group
+    class="list-mode"
+    value="0"
+    (change)="changeListMode($event)"
+  >
+    <mat-button-toggle value="0">Movies</mat-button-toggle>
+    <mat-button-toggle value="1">TV Shows</mat-button-toggle>
+  </mat-button-toggle-group>
   <div class="list">
     <app-card
       class="element"

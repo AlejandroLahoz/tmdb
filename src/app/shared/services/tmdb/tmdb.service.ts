@@ -16,4 +16,11 @@ export class TmdbService {
       .get<PopularMoviesReqRoot>(URL.POPULARMOVIES)
       .pipe(map((response) => response.results));
   }
+
+  getPopularTVShows(): Observable<Movie[]> {
+    debugger;
+    return this.apiService
+      .get<PopularMoviesReqRoot>(URL.POPULARTVSHOWS)
+      .pipe(map((response) => response.results));
+  }
 }

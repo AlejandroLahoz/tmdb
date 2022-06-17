@@ -1,11 +1,15 @@
-.list-card {
+.list-wrapper {
   max-width: fit-content;
   width: 80%;
-  margin: 5rem auto 0 auto;
+  margin: 2rem auto 0 auto;
+
+  .list-mode {
+    position: relative;
+    left: 100%;
+  }
 
   .list {
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
     align-items: flex-end;
     gap: 3rem;
