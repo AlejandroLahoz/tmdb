@@ -10,6 +10,8 @@ import {
 import { getDetail } from 'src/app/shared/store/data/data.selectors';
 import { DataState } from 'src/app/shared/store/data/data.state';
 
+type Category = 'movie' | 'tv';
+
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -17,6 +19,7 @@ import { DataState } from 'src/app/shared/store/data/data.state';
 })
 export class DetailComponent implements OnInit {
   detailMovie!: DetailReqRoot;
+  category!: Category;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,9 +31,9 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    const category = this.route.snapshot.paramMap.get('category');
-    if (id && category) {
-      if (category === 'movie') {
+    this.category = this.route.snapshot.paramMap.get('category') as Category;
+    if (id && this.category) {
+      if (this.category === 'movie') {
         this.store.dispatch(loadMovieDetail({ id: Number(id) }));
       } else {
         this.store.dispatch(loadTVShowDetail({ id: Number(id) }));
@@ -56,6 +59,6 @@ export class DetailComponent implements OnInit {
   }
 
   public goToDetail(id: number) {
-    this.router.navigate(['/detail', id]);
+    this.router.navigate(['/detail', this.category, id]);
   }
 }
