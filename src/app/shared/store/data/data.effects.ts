@@ -4,11 +4,12 @@ import { of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { TmdbService } from '../../services/tmdb/tmdb.service';
 import {
-  loadDetail,
-  loadDetailSuccess,
+  loadMovieDetail,
+  loadMovieDetailSuccess,
   loadMovies,
   loadMoviesError,
   loadMoviesSuccess,
+  loadTVShowDetail,
   loadTVShows,
   loadTVShowsError,
   loadTVShowsSuccess,
@@ -42,12 +43,24 @@ export class DataEffects {
     )
   );
 
-  loadDetail$ = createEffect(() =>
+  loadMovieDetail$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(loadDetail),
+      ofType(loadMovieDetail),
       mergeMap((action) =>
         this.tmdbService.getDetailMovie(action.id).pipe(
-          map((detail) => loadDetailSuccess({ payload: detail })),
+          map((detail) => loadMovieDetailSuccess({ payload: detail })),
+          catchError(() => of(loadTVShowsError()))
+        )
+      )
+    )
+  );
+
+  loadTVShowDetail$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loadTVShowDetail),
+      mergeMap((action) =>
+        this.tmdbService.getDetailTVShow(action.id).pipe(
+          map((detail) => loadMovieDetailSuccess({ payload: detail })),
           catchError(() => of(loadTVShowsError()))
         )
       )

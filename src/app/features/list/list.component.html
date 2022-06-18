@@ -33,6 +33,7 @@
         [id]="element.id"
         [poster]="element.poster_path"
         [date]="element.first_air_date"
+        (detailClicked)="goToDetail($event)"
       ></app-card>
     </ng-container>
   </div>

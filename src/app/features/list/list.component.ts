@@ -52,6 +52,7 @@ export class ListComponent implements OnInit {
   }
 
   public goToDetail(id: number) {
-    this.router.navigate(['/detail', id]);
+    const cateogoryParam = this.listMode === ListMode.MOVIES ? 'movie' : 'tv';
+    this.router.navigate(['/detail', cateogoryParam, id]);
   }
 }

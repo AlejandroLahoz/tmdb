@@ -11,7 +11,4 @@ export const getListTVShow = createSelector(
   (state) => state.listTVShow
 );
 
-export const getDetailMovie = createSelector(
-  getDataState,
-  (state) => state.detailMovie
-);
+export const getDetail = createSelector(getDataState, (state) => state.detail);

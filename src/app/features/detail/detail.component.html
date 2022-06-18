@@ -1,6 +1,6 @@
 <div class="detail" *ngIf="detailMovie">
   <div class="header">
-    <span class="title">{{ detailMovie.title }}</span>
+    <span class="title">{{ detailMovie.title || detailMovie.name }}</span>
     <div class="stats">
       <div class="rating">
         <mat-icon class="star">star</mat-icon>
@@ -102,13 +102,13 @@
         </mat-list-item>
       </mat-list>
     </div>
-    <div class="recommendations">
+    <div class="recommendations" *ngIf="detailMovie.recommendations">
       <span class="title">Recommendations</span>
       <div class="cards">
         <app-card
           *ngFor="let recommendation of detailMovie.recommendations?.results"
           (detailClicked)="goToDetail($event)"
-          [title]="recommendation.title"
+          [title]="recommendation.title || recommendation.name"
           [count_rating]="recommendation.vote_count"
           [rating]="recommendation.vote_average"
           [overview]="recommendation.overview"

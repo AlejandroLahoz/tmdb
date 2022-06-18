@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { filter, map, take } from 'rxjs';
-import { DetailMovieReqRoot } from 'src/app/shared/interfaces/detail-movie-req';
-import { loadDetail } from 'src/app/shared/store/data/data.actions';
-import { getDetailMovie } from 'src/app/shared/store/data/data.selectors';
+import { filter, map } from 'rxjs';
+import { DetailReqRoot } from 'src/app/shared/interfaces/detail-req';
+import {
+  loadMovieDetail,
+  loadTVShowDetail,
+} from 'src/app/shared/store/data/data.actions';
+import { getDetail } from 'src/app/shared/store/data/data.selectors';
 import { DataState } from 'src/app/shared/store/data/data.state';
 
 @Component({
@@ -13,23 +16,29 @@ import { DataState } from 'src/app/shared/store/data/data.state';
   styleUrls: ['./detail.component.scss'],
 })
 export class DetailComponent implements OnInit {
-  detailMovie!: DetailMovieReqRoot;
+  detailMovie!: DetailReqRoot;
 
   constructor(
     private route: ActivatedRoute,
     private store: Store<{ data: DataState }>,
     private router: Router
-  ) {}
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.store.dispatch(loadDetail({ id: Number(id) }));
+    const category = this.route.snapshot.paramMap.get('category');
+    if (id && category) {
+      if (category === 'movie') {
+        this.store.dispatch(loadMovieDetail({ id: Number(id) }));
+      } else {
+        this.store.dispatch(loadTVShowDetail({ id: Number(id) }));
+      }
       this.store
-        .select(getDetailMovie)
+        .select(getDetail)
         .pipe(
           filter((detail) => !!detail),
-          take(5),
           map((detail) => {
             return {
               ...detail,
@@ -37,7 +46,7 @@ export class DetailComponent implements OnInit {
                 ...detail?.recommendations,
                 results: detail?.recommendations.results.slice(0, 3),
               },
-            } as DetailMovieReqRoot;
+            } as DetailReqRoot;
           })
         )
         .subscribe((detail) => {

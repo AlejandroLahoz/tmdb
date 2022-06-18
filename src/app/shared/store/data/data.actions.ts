@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { DetailMovieReqRoot } from '../../interfaces/detail-movie-req';
+import { DetailReqRoot } from '../../interfaces/detail-req';
 import { Movie } from '../../interfaces/movie';
 import { TVShow } from '../../interfaces/tv-shows';
 
@@ -21,11 +21,20 @@ export const loadTVShowsError = createAction(
   '[List Component] Load TV Shows Error'
 );
 
-export const loadDetail = createAction(
-  '[List Component] Detail Detail',
+export const loadMovieDetail = createAction(
+  '[List Component] Detail Movie Detail',
   props<{ id: number }>()
 );
-export const loadDetailSuccess = createAction(
-  '[Detail Component] Load Detail Success',
-  props<{ payload: DetailMovieReqRoot }>()
+export const loadMovieDetailSuccess = createAction(
+  '[Detail Component] Load Movie Detail Success',
+  props<{ payload: DetailReqRoot }>()
+);
+
+export const loadTVShowDetail = createAction(
+  '[List Component] Detail TV Show Detail',
+  props<{ id: number }>()
+);
+export const loadTVShowDetailSuccess = createAction(
+  '[Detail Component] Load TV Show Detail Success',
+  props<{ payload: DetailReqRoot }>()
 );

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { URL } from '../../constants/url';
-import { DetailMovieReqRoot } from '../../interfaces/detail-movie-req';
+import { DetailReqRoot } from '../../interfaces/detail-req';
 import { Movie } from '../../interfaces/movie';
 import { PopularMoviesReqRoot } from '../../interfaces/popular-movies-req';
 import { TVShowsReqRoot } from '../../interfaces/popular-tv-shows-req';
@@ -26,15 +26,15 @@ export class TmdbService {
       .pipe(map((response) => response.results));
   }
 
-  getDetailMovie(id: number): Observable<DetailMovieReqRoot> {
-    return this.apiService.get<DetailMovieReqRoot>(
+  getDetailMovie(id: number): Observable<DetailReqRoot> {
+    return this.apiService.get<DetailReqRoot>(
       `${URL.DETAIL.MOVIE}/${id}?append_to_response=recommendations`
     );
   }
 
-  /* getDetailTVShow(id: number): Observable<TVShow[]> {
-    return this.apiService.get<TVShowsReqRoot>(
+  getDetailTVShow(id: number): Observable<any> {
+    return this.apiService.get<any>(
       `${URL.DETAIL.TVSHOW}/${id}?append_to_response=recommendations`
     );
-  } */
+  }
 }

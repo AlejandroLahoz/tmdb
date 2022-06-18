@@ -5,7 +5,7 @@ import { ProductionCountry } from './production-country';
 import { RecommendationsRootReq } from './recomendations-req';
 import { SpokenLanguage } from './spoken-language';
 
-export interface DetailMovieReqRoot {
+export interface DetailReqRoot {
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection: BelongsToCollection;
@@ -32,4 +32,5 @@ export interface DetailMovieReqRoot {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  name: string;
 }

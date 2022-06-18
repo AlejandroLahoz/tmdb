@@ -1,4 +1,4 @@
-import { DetailMovieReqRoot } from '../../interfaces/detail-movie-req';
+import { DetailReqRoot } from '../../interfaces/detail-req';
 import { Movie } from '../../interfaces/movie';
 import { TVShow } from '../../interfaces/tv-shows';
 
@@ -9,7 +9,7 @@ export interface DataState {
   loadingListMovieStatus: RequestStatus;
   listTVShow: TVShow[];
   loadingListTVShowStatus: RequestStatus;
-  detailMovie: DetailMovieReqRoot | null;
+  detail: DetailReqRoot | null;
   loadingDetailStatus: RequestStatus;
 }
 
@@ -18,6 +18,6 @@ export const intialState: DataState = {
   listTVShow: [],
   loadingListMovieStatus: 'pending',
   loadingListTVShowStatus: 'pending',
-  detailMovie: null,
+  detail: null,
   loadingDetailStatus: 'pending',
 };

@@ -1,9 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
 import {
-  loadDetail,
-  loadDetailSuccess,
+  loadMovieDetail,
+  loadMovieDetailSuccess,
   loadMovies,
   loadMoviesSuccess,
+  loadTVShowDetail,
+  loadTVShowDetailSuccess,
   loadTVShows,
   loadTVShowsSuccess,
 } from './data.actions';
@@ -37,17 +39,30 @@ export const dataReducer = createReducer(
       listTVShow: action.payload,
     };
   }),
-  on(loadDetail, (state) => {
+  on(loadMovieDetail, (state) => {
     return {
       ...state,
-      loadingListTVShowStatus: 'pending',
+      loadingDetailMovieStatus: 'pending',
     };
   }),
-  on(loadDetailSuccess, (state, action) => {
+  on(loadMovieDetailSuccess, (state, action) => {
     return {
       ...state,
-      loadingListTVShowStatus: 'success',
-      detailMovie: action.payload,
+      loadingDetailMovieStatus: 'success',
+      detail: action.payload,
+    };
+  }),
+  on(loadTVShowDetail, (state) => {
+    return {
+      ...state,
+      loadingDetailTVShowStatus: 'pending',
+    };
+  }),
+  on(loadTVShowDetailSuccess, (state, action) => {
+    return {
+      ...state,
+      loadingDetailTVShowStatus: 'success',
+      detail: action.payload,
     };
   })
 );
