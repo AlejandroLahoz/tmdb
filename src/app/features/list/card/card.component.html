@@ -5,19 +5,26 @@
     <p class="overview">{{ overview }}</p>
   </mat-card-content>
   <mat-card-actions class="actions">
-    <div class="rating">
-      <mat-icon class="star">star</mat-icon>
-      <div class="average">
-        <span>
-          <b>{{ rating }}</b
-          >/10</span
-        >
-        <span>{{ count_rating }}</span>
+    <div class="extra-info">
+      <div class="rating">
+        <mat-icon class="star">star</mat-icon>
+        <div class="average">
+          <span>
+            <b>{{ rating }}</b
+            >/10</span
+          >
+          <span>{{ count_rating }}</span>
+        </div>
       </div>
+      <span class="release-date">
+        <span class="title">Release date</span>
+        {{ date | date: "dd/MM/yyyy" }}
+      </span>
     </div>
-    <button mat-raised-button color="accent" (click)="onDetailClicked()">
-      View details
-    </button>
-    <span class="release-date">{{ date | date: "dd/MM/yyyy" }}</span>
+    <div class="detail-button">
+      <button mat-raised-button color="accent" (click)="onDetailClicked()">
+        View details
+      </button>
+    </div>
   </mat-card-actions>
 </mat-card>

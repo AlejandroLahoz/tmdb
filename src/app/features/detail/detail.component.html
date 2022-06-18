@@ -25,7 +25,7 @@
       />
     </div>
     <div class="information">
-      <div class="overview">
+      <div class="overview" *ngIf="detailMovie.overview">
         <span class="title">Overview:</span>
         <br />
         <p>{{ detailMovie.overview }}</p>
@@ -102,21 +102,22 @@
         </mat-list-item>
       </mat-list>
     </div>
-    <div class="recommendations" *ngIf="detailMovie.recommendations">
-      <span class="title">Recommendations</span>
-      <div class="cards">
-        <app-card
-          *ngFor="let recommendation of detailMovie.recommendations?.results"
-          (detailClicked)="goToDetail($event)"
-          [title]="recommendation.title || recommendation.name"
-          [count_rating]="recommendation.vote_count"
-          [rating]="recommendation.vote_average"
-          [overview]="recommendation.overview"
-          [poster]="recommendation.poster_path"
-          [date]="recommendation.release_date"
-          [id]="recommendation.id"
-        ></app-card>
-      </div>
+  </div>
+  <div class="recommendations" *ngIf="detailMovie.recommendations">
+    <span class="title">Recommendations</span>
+    <div class="cards">
+      <app-card
+        *ngFor="let recommendation of detailMovie.recommendations?.results"
+        class="card"
+        (detailClicked)="goToDetail($event)"
+        [title]="recommendation.title || recommendation.name"
+        [count_rating]="recommendation.vote_count"
+        [rating]="recommendation.vote_average"
+        [overview]="recommendation.overview"
+        [poster]="recommendation.poster_path"
+        [date]="recommendation.release_date"
+        [id]="recommendation.id"
+      ></app-card>
     </div>
   </div>
 </div>

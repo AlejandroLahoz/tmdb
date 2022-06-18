@@ -1,12 +1,10 @@
 <div class="list-wrapper">
-  <mat-button-toggle-group
-    class="list-mode"
-    value="0"
-    (valueChange)="changeListMode($event)"
-  >
-    <mat-button-toggle value="0">Movies</mat-button-toggle>
-    <mat-button-toggle value="1">TV Shows</mat-button-toggle>
-  </mat-button-toggle-group>
+  <div class="list-mode">
+    <mat-button-toggle-group value="0" (valueChange)="changeListMode($event)">
+      <mat-button-toggle value="0">Movies</mat-button-toggle>
+      <mat-button-toggle value="1">TV Shows</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
   <div class="list">
     <ng-container *ngIf="listMode === 0">
       <app-card

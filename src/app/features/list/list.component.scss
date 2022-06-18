@@ -5,17 +5,20 @@
 
   .list-mode {
     position: relative;
-    left: 100%;
+    text-align: right;
   }
 
   .list {
     display: flex;
+    margin-top: 2rem;
     flex-wrap: wrap;
     align-items: flex-end;
     justify-content: center;
-    gap: 3rem;
+    gap: 2rem;
 
     .element {
+      width: 20rem;
+      height: 40rem;
       transition: transform 100ms;
 
       &:hover {

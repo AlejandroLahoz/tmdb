@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { filter, map } from 'rxjs';
+import { filter } from 'rxjs';
 import { DetailReqRoot } from 'src/app/shared/interfaces/detail-req';
 import {
   loadMovieDetail,
@@ -40,20 +40,11 @@ export class DetailComponent implements OnInit {
       }
       this.store
         .select(getDetail)
-        .pipe(
-          filter((detail) => !!detail),
-          map((detail) => {
-            return {
-              ...detail,
-              recommendations: {
-                ...detail?.recommendations,
-                results: detail?.recommendations.results.slice(0, 3),
-              },
-            } as DetailReqRoot;
-          })
-        )
+        .pipe(filter((detail) => !!detail))
         .subscribe((detail) => {
-          this.detailMovie = detail;
+          if (detail) {
+            this.detailMovie = detail;
+          }
         });
     }
   }

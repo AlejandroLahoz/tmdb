@@ -1,14 +1,10 @@
 .card {
-  max-width: 20rem;
-
   .title {
     max-width: 20rem;
     text-align: center;
   }
 
   .content {
-    max-height: 25rem;
-
     img {
       position: relative;
       left: 50%;
@@ -29,30 +25,48 @@
 
   .actions {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 
-    .rating {
-      font-size: 1rem;
-      display: flex;
-      gap: 0.3rem;
-      align-items: center;
-
-      .star {
-        color: #e2b616;
-        font-size: 1.6rem;
-      }
-
-      .average {
-        display: flex;
-        flex-direction: column;
-        gap: 0.3rem;
-        align-items: center;
-      }
+    .detail-button {
+      text-align: center;
     }
 
-    .release-date {
-      font-weight: 500;
+    .extra-info {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+
+      .rating {
+        font-size: 1rem;
+        display: flex;
+        gap: 0.3rem;
+        align-items: center;
+
+        .star {
+          color: #e2b616;
+          font-size: 1.6rem;
+        }
+
+        .average {
+          display: flex;
+          flex-direction: column;
+          gap: 0.3rem;
+          align-items: center;
+        }
+      }
+
+      .release-date {
+        display: flex;
+        flex-direction: column;
+
+        .title {
+          font-weight: 500;
+        }
+      }
     }
   }
 }
