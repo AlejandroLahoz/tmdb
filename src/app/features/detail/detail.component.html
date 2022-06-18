@@ -1,3 +1,122 @@
-<p>
-  detail works!
-</p>
+<div class="detail" *ngIf="detailMovie">
+  <div class="header">
+    <span class="title">{{ detailMovie.title }}</span>
+    <div class="stats">
+      <div class="rating">
+        <mat-icon class="star">star</mat-icon>
+        <div class="average">
+          <span>
+            <b>{{ detailMovie.vote_average }}</b
+            >/10</span
+          >
+          <span>{{ detailMovie.vote_count }}</span>
+        </div>
+      </div>
+      <div class="popularity">
+        <mat-icon class="person">person</mat-icon>
+        <span>{{ detailMovie.popularity }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="poster">
+      <img
+        [src]="'https://image.tmdb.org/t/p/w500' + detailMovie.poster_path"
+      />
+    </div>
+    <div class="information">
+      <div class="overview">
+        <span class="title">Overview:</span>
+        <br />
+        <p>{{ detailMovie.overview }}</p>
+      </div>
+      <mat-list>
+        <mat-list-item class="item" *ngIf="detailMovie.belongs_to_collection">
+          <span class="key">Belongs to:</span>
+          <span>{{ detailMovie.belongs_to_collection.name }}</span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item class="item" *ngIf="detailMovie.budget">
+          <span class="key">Budget:</span>
+          <span>{{ detailMovie.budget }}$</span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item class="item" *ngIf="detailMovie.runtime">
+          <span class="key">Runtime:</span>
+          <span>{{ detailMovie.runtime }}m</span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item class="item" *ngIf="detailMovie.release_date">
+          <span class="key">Release date:</span>
+          <span>{{ detailMovie.release_date | date: "dd/MM/yyyy" }}</span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item class="item" *ngIf="detailMovie.genres?.length">
+          <span class="key">Genres:</span>
+          <mat-chip-list>
+            <mat-chip *ngFor="let genre of detailMovie.genres">{{
+              genre.name
+            }}</mat-chip>
+          </mat-chip-list>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item
+          class="item"
+          *ngIf="detailMovie.production_companies?.length"
+        >
+          <span class="key">Companies:</span>
+          <mat-chip-list>
+            <mat-chip
+              *ngFor="
+                let productionCompanie of detailMovie.production_companies
+              "
+              >{{ productionCompanie.name }}</mat-chip
+            >
+          </mat-chip-list>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item
+          class="item"
+          *ngIf="detailMovie.production_countries?.length"
+        >
+          <span class="key">Countries:</span>
+          <mat-chip-list>
+            <mat-chip
+              *ngFor="let productionCountry of detailMovie.production_countries"
+              >{{ productionCountry.name }}</mat-chip
+            >
+          </mat-chip-list>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item
+          class="item"
+          *ngIf="detailMovie.spoken_languages?.length"
+        >
+          <span class="key">Spoken languages:</span>
+          <mat-chip-list>
+            <mat-chip
+              *ngFor="let spokenLanguages of detailMovie.spoken_languages"
+              >{{ spokenLanguages.name }}</mat-chip
+            >
+          </mat-chip-list>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="recommendations">
+      <span class="title">Recommendations</span>
+      <div class="cards">
+        <app-card
+          *ngFor="let recommendation of detailMovie.recommendations?.results"
+          (detailClicked)="goToDetail($event)"
+          [title]="recommendation.title"
+          [count_rating]="recommendation.vote_count"
+          [rating]="recommendation.vote_average"
+          [overview]="recommendation.overview"
+          [poster]="recommendation.poster_path"
+          [date]="recommendation.release_date"
+          [id]="recommendation.id"
+        ></app-card>
+      </div>
+    </div>
+  </div>
+</div>

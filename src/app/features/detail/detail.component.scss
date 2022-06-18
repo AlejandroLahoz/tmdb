@@ -1,0 +1,107 @@
+.detail {
+  width: 80%;
+  position: relative;
+  top: 5rem;
+  margin: 0 auto 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  .title,
+  .key {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      font-size: 1.8rem;
+      font-weight: 500;
+    }
+
+    .stats {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      font-size: 1.2rem;
+
+      .popularity {
+        display: flex;
+        gap: 0.3rem;
+        align-items: center;
+
+        .person {
+          font-size: 1.6rem;
+        }
+      }
+
+      .rating {
+        display: flex;
+        gap: 0.3rem;
+        align-items: center;
+
+        .star {
+          color: #e2b616;
+          font-size: 1.6rem;
+        }
+
+        .average {
+          display: flex;
+          flex-direction: column;
+          gap: 0.3rem;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  .body {
+    top: 2rem;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 5rem;
+
+    .poster {
+      width: fit-content;
+      img {
+        border-radius: 12px;
+      }
+    }
+    .information {
+      width: 50%;
+      .overview {
+        p {
+          text-align: justify;
+        }
+      }
+
+      .item {
+        display: flex;
+        align-items: center;
+        min-height: 6rem;
+
+        .key {
+          margin-right: 1rem;
+        }
+      }
+    }
+
+    .recommendations {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        align-items: flex-end;
+      }
+    }
+  }
+}

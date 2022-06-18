@@ -1,5 +1,5 @@
 .card {
-  min-width: 20rem;
+  max-width: 20rem;
 
   .title {
     max-width: 20rem;
@@ -7,7 +7,7 @@
   }
 
   .content {
-    min-height: 25rem;
+    max-height: 25rem;
 
     img {
       position: relative;
@@ -46,6 +46,8 @@
       .average {
         display: flex;
         flex-direction: column;
+        gap: 0.3rem;
+        align-items: center;
       }
     }
 

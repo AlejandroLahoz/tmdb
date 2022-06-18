@@ -47,7 +47,7 @@ export const dataReducer = createReducer(
     return {
       ...state,
       loadingListTVShowStatus: 'success',
-      detail: action.payload,
+      detailMovie: action.payload,
     };
   })
 );

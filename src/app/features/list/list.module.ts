@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { CardComponent } from './card/card.component';
+import { SharedModule } from 'src/app/shared/modules/shared.module';
 import { ListRoutingModule } from './list-routing.module';
 import { ListComponent } from './list.component';
 
@@ -16,7 +16,8 @@ import { ListComponent } from './list.component';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    SharedModule,
   ],
-  declarations: [ListComponent, CardComponent],
+  declarations: [ListComponent],
 })
 export class ListModule {}
