@@ -1,8 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ListMode } from 'src/app/shared/enums/ListMode';
 import { Movie } from 'src/app/shared/interfaces/movie';
-import { TmdbService } from 'src/app/shared/services/tmdb/tmdb.service';
+import { TVShow } from 'src/app/shared/interfaces/tv-shows';
+import {
+  loadMovies,
+  loadTVShows,
+} from 'src/app/shared/store/data/data.actions';
+import {
+  getListMovie,
+  getListTVShow,
+} from 'src/app/shared/store/data/data.selectors';
+import { DataState } from 'src/app/shared/store/data/data.state';
 
 @Component({
   selector: 'app-list',
@@ -10,23 +21,33 @@ import { TmdbService } from 'src/app/shared/services/tmdb/tmdb.service';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  public movieList$!: Observable<Movie[]>;
+  public listMovie$!: Observable<Movie[]>;
+  public listTVShow$!: Observable<TVShow[]>;
+  public listMode: ListMode = ListMode.MOVIES;
 
-  constructor(private tmdbService: TmdbService) {}
+  constructor(
+    private store: Store<{ data: DataState }>,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.movieList$ = this.tmdbService.getPopularMovies();
+    this.listMovie$ = this.store.select(getListMovie);
+    this.listTVShow$ = this.store.select(getListTVShow);
   }
 
   changeListMode(event: any): void {
-    const { value } = event;
-    switch (value) {
+    this.listMode = Number(event);
+    switch (this.listMode) {
       case ListMode.MOVIES:
-        this.movieList$ = this.tmdbService.getPopularMovies();
+        this.store.dispatch(loadMovies());
         break;
       case ListMode.TVSHOWS:
-        this.movieList$ = this.tmdbService.getPopularTVShows();
+        this.store.dispatch(loadTVShows());
         break;
     }
+  }
+
+  public goToDetail(id: number) {
+    this.router.navigate(['/detail', id]);
   }
 }

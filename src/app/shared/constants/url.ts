@@ -1,4 +1,10 @@
 export const URL = {
-  POPULARMOVIES: '/movie/popular',
-  POPULARTVSHOWS: '/tv/popular',
+  POPULAR: {
+    MOVIES: '/movie/popular',
+    TVSHOWS: '/tv/popular',
+  },
+  DETAIL: {
+    MOVIE: '/movie',
+    TVSHOW: '/tv',
+  },
 };

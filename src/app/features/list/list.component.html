@@ -2,16 +2,38 @@
   <mat-button-toggle-group
     class="list-mode"
     value="0"
-    (change)="changeListMode($event)"
+    (valueChange)="changeListMode($event)"
   >
     <mat-button-toggle value="0">Movies</mat-button-toggle>
     <mat-button-toggle value="1">TV Shows</mat-button-toggle>
   </mat-button-toggle-group>
   <div class="list">
-    <app-card
-      class="element"
-      *ngFor="let element of movieList$ | async"
-      [movie]="element"
-    ></app-card>
+    <ng-container *ngIf="listMode === 0">
+      <app-card
+        class="element"
+        *ngFor="let element of listMovie$ | async"
+        [rating]="element.vote_average"
+        [count_rating]="element.vote_count"
+        [title]="element.title"
+        [overview]="element.overview"
+        [id]="element.id"
+        [poster]="element.poster_path"
+        [date]="element.release_date"
+        (detailClicked)="goToDetail($event)"
+      ></app-card>
+    </ng-container>
+    <ng-container *ngIf="listMode === 1">
+      <app-card
+        class="element"
+        *ngFor="let element of listTVShow$ | async"
+        [rating]="element.vote_average"
+        [count_rating]="element.vote_count"
+        [title]="element.name"
+        [overview]="element.overview"
+        [id]="element.id"
+        [poster]="element.poster_path"
+        [date]="element.first_air_date"
+      ></app-card>
+    </ng-container>
   </div>
 </div>

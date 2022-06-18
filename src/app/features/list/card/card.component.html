@@ -1,27 +1,23 @@
 <mat-card class="card">
-  <mat-card-title class="title">{{ movie.title }}</mat-card-title>
-  <mat-card-content>
-    <img
-      [src]="
-        'https://image.tmdb.org/t/p/w220_and_h330_face' + movie.poster_path
-      "
-    />
-    <p class="overview">{{ movie.overview }}</p>
+  <mat-card-title class="title">{{ title }}</mat-card-title>
+  <mat-card-content class="content">
+    <img [src]="'https://image.tmdb.org/t/p/w220_and_h330_face' + poster" />
+    <p class="overview">{{ overview }}</p>
   </mat-card-content>
   <mat-card-actions class="actions">
     <div class="rating">
       <mat-icon class="star">star</mat-icon>
       <div class="average">
         <span>
-          <b>{{ movie.vote_average }}</b
+          <b>{{ rating }}</b
           >/10</span
         >
-        <span>{{ movie.vote_count }}</span>
+        <span>{{ count_rating }}</span>
       </div>
     </div>
-    <button mat-raised-button color="accent">Details</button>
-    <span class="release-date">{{
-      movie.release_date | date: "dd/MM/yyyy"
-    }}</span>
+    <button mat-raised-button color="accent" (click)="onDetailClicked()">
+      View details
+    </button>
+    <span class="release-date">{{ date | date: "dd/MM/yyyy" }}</span>
   </mat-card-actions>
 </mat-card>

@@ -7,6 +7,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('src/app/features/list/list.module').then((m) => m.ListModule),
   },
+  {
+    path: 'detail',
+    loadChildren: () =>
+      import('src/app/features/detail/detail.module').then(
+        (m) => m.DetailModule
+      ),
+  },
 ];
 
 @NgModule({
