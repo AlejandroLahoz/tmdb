@@ -1,27 +1,53 @@
-# TmdbAlejandroLahoz
+# TMDB
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
+This project has been developed by using Angular 14 and Redux for the state management.
 
-## Development server
+### You can visit it at https://tmdb-delta.vercel.app/
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Deployment
 
-## Code scaffolding
+First of all, install the dependencies
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+  npm i
+```
 
-## Build
+Afterwards, deploy 🚀
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+  npm run start
+  // or
+  ng serve
+```
 
-## Running unit tests
+## Running Tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To run tests, run the following command
 
-## Running end-to-end tests
+```bash
+  npm run test
+  // or
+  ng test
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Current code coverage
 
-## Further help
+![alt text](https://i.ibb.co/sKGny37/Captura.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Authors
+
+- [@AlejandroLahoz](https://github.com/AlejandroLahoz)
+
+## Features
+
+- Responsive web design
+
+  ![alt text](https://i.ibb.co/zxVCKg7/3725333a-ac82-4c5e-a703-76b91be4f748.jpg)
+
+- Cache with redux
+
+  ![alt text](https://i.ibb.co/nkvRpy2/code.png)
+
+- Store by features
+
+  ![alt text](https://i.ibb.co/zxnF0V1/code.png)
