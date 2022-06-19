@@ -28,11 +28,7 @@ export class ListComponent implements OnInit {
   constructor(
     private store: Store<{ data: DataState }>,
     private router: Router
-  ) {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => {
-      return false;
-    };
-  }
+  ) {}
 
   ngOnInit() {
     this.listMovie$ = this.store.select(getListMovie);

@@ -20,6 +20,7 @@ type Category = 'movie' | 'tv';
 export class DetailComponent implements OnInit {
   detailMovie!: DetailReqRoot;
   category!: Category;
+  id: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,16 +28,16 @@ export class DetailComponent implements OnInit {
     private router: Router
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.id = this.route.snapshot.paramMap.get('id') as string;
+    this.category = this.route.snapshot.paramMap.get('category') as Category;
   }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.category = this.route.snapshot.paramMap.get('category') as Category;
-    if (id && this.category) {
+    if (this.id && this.category) {
       if (this.category === 'movie') {
-        this.store.dispatch(loadMovieDetail({ id: Number(id) }));
+        this.store.dispatch(loadMovieDetail({ id: Number(this.id) }));
       } else {
-        this.store.dispatch(loadTVShowDetail({ id: Number(id) }));
+        this.store.dispatch(loadTVShowDetail({ id: Number(this.id) }));
       }
       this.store
         .select(getDetail)

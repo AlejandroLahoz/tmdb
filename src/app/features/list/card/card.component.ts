@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Movie } from 'src/app/shared/interfaces/movie';
 
 @Component({
   selector: 'app-card',
@@ -7,7 +6,6 @@ import { Movie } from 'src/app/shared/interfaces/movie';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  @Input() movie!: Movie;
   @Input() rating!: number;
   @Input() count_rating!: number;
   @Input() title!: string;
