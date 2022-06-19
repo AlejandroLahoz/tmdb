@@ -5,9 +5,11 @@ import { Store } from '@ngrx/store';
 import { provideMockStore } from '@ngrx/store/testing';
 import { Movie } from 'src/app/shared/interfaces/movie';
 import { TVShow } from 'src/app/shared/interfaces/tv-shows';
-import { DataState, intialState } from 'src/app/shared/store/data/data.state';
-
-import { ListComponent } from './list.component';
+import {
+  intialState,
+  PopularListState,
+} from 'src/app/shared/store/popular-list/popular-list.state';
+import { ListComponent } from './popular-list.component';
 
 class StoreStub {
   dispatch(action: any): void {}
@@ -38,7 +40,7 @@ describe('ListComponent', () => {
       overview: 'Awesome film',
     },
   ] as TVShow[];
-  const initialState: DataState = {
+  const initialState: PopularListState = {
     ...intialState,
     listMovie: mockListMovie,
     listTVShow: mockListTVShow,

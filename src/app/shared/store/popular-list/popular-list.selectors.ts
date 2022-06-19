@@ -1,7 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { DataState } from './data.state';
+import { PopularListState } from './popular-list.state';
 
-export const getDataState = createFeatureSelector<DataState>('data');
+export const getDataState =
+  createFeatureSelector<PopularListState>('popularList');
 export const getListMovie = createSelector(
   getDataState,
   (state) => state.listMovie
@@ -10,5 +11,3 @@ export const getListTVShow = createSelector(
   getDataState,
   (state) => state.listTVShow
 );
-
-export const getDetail = createSelector(getDataState, (state) => state.detail);

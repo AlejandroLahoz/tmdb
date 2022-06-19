@@ -5,7 +5,9 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('src/app/features/list/list.module').then((m) => m.ListModule),
+      import('src/app/features/popular-list/popular-list.module').then(
+        (m) => m.PopularListModule
+      ),
   },
   {
     path: 'detail',

@@ -5,13 +5,13 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from 'src/app/shared/modules/shared.module';
-import { ListRoutingModule } from './list-routing.module';
-import { ListComponent } from './list.component';
+import { PopularListRoutingModule } from './popular-list-routing.module';
+import { ListComponent } from './popular-list.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    ListRoutingModule,
+    PopularListRoutingModule,
     MatButtonToggleModule,
     MatCardModule,
     MatButtonModule,
@@ -20,4 +20,4 @@ import { ListComponent } from './list.component';
   ],
   declarations: [ListComponent],
 })
-export class ListModule {}
+export class PopularListModule {}

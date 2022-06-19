@@ -6,7 +6,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 import { SharedModule } from 'src/app/shared/modules/shared.module';
+import { DetailEffects } from 'src/app/shared/store/detail/detail.effects';
+import { detailReducer } from 'src/app/shared/store/detail/detail.reducer';
 import { DetailRoutingModule } from './detail-routing.module';
 import { DetailComponent } from './detail.component';
 
@@ -21,6 +25,8 @@ import { DetailComponent } from './detail.component';
     MatCardModule,
     SharedModule,
     MatGridListModule,
+    StoreModule.forFeature('detail', detailReducer),
+    EffectsModule.forFeature([DetailEffects]),
   ],
   declarations: [DetailComponent],
 })

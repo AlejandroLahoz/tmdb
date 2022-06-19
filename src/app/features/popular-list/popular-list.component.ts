@@ -8,17 +8,17 @@ import { TVShow } from 'src/app/shared/interfaces/tv-shows';
 import {
   loadMovies,
   loadTVShows,
-} from 'src/app/shared/store/data/data.actions';
+} from 'src/app/shared/store/popular-list/popular-list.actions';
 import {
   getListMovie,
   getListTVShow,
-} from 'src/app/shared/store/data/data.selectors';
-import { DataState } from 'src/app/shared/store/data/data.state';
+} from 'src/app/shared/store/popular-list/popular-list.selectors';
+import { PopularListState } from 'src/app/shared/store/popular-list/popular-list.state';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
+  selector: 'app-popular-list',
+  templateUrl: './popular-list.component.html',
+  styleUrls: ['./popular-list.component.scss'],
 })
 export class ListComponent implements OnInit {
   public listMovie$!: Observable<Movie[]>;
@@ -26,7 +26,7 @@ export class ListComponent implements OnInit {
   public listMode: ListMode = ListMode.MOVIES;
 
   constructor(
-    private store: Store<{ data: DataState }>,
+    private store: Store<{ popularList: PopularListState }>,
     private router: Router
   ) {}
 

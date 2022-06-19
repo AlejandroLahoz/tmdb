@@ -6,9 +6,9 @@ import { DetailReqRoot } from 'src/app/shared/interfaces/detail-req';
 import {
   loadMovieDetail,
   loadTVShowDetail,
-} from 'src/app/shared/store/data/data.actions';
-import { getDetail } from 'src/app/shared/store/data/data.selectors';
-import { DataState } from 'src/app/shared/store/data/data.state';
+} from 'src/app/shared/store/detail/detail.actions';
+import { getDetail } from 'src/app/shared/store/detail/detail.selectors';
+import { DetailState } from 'src/app/shared/store/detail/detail.state';
 
 type Category = 'movie' | 'tv';
 
@@ -24,7 +24,7 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private store: Store<{ data: DataState }>,
+    private store: Store<{ data: DetailState }>,
     private router: Router
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;

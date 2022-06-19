@@ -5,20 +5,17 @@ import { of } from 'rxjs';
 import { catchError, map, mergeMap, withLatestFrom } from 'rxjs/operators';
 import { TmdbService } from '../../services/tmdb/tmdb.service';
 import {
-  loadMovieDetail,
-  loadMovieDetailSuccess,
   loadMovies,
   loadMoviesError,
   loadMoviesSuccess,
-  loadTVShowDetail,
   loadTVShows,
   loadTVShowsError,
   loadTVShowsSuccess,
-} from './data.actions';
-import { getListMovie, getListTVShow } from './data.selectors';
+} from './popular-list.actions';
+import { getListMovie, getListTVShow } from './popular-list.selectors';
 
 @Injectable()
-export class DataEffects {
+export class PopularListEffects {
   constructor(
     private actions$: Actions,
     private tmdbService: TmdbService,
@@ -54,30 +51,6 @@ export class DataEffects {
           catchError(() => of(loadTVShowsError()))
         );
       })
-    )
-  );
-
-  loadMovieDetail$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(loadMovieDetail),
-      mergeMap((action) =>
-        this.tmdbService.getDetailMovie(action.id).pipe(
-          map((detail) => loadMovieDetailSuccess({ payload: detail })),
-          catchError(() => of(loadTVShowsError()))
-        )
-      )
-    )
-  );
-
-  loadTVShowDetail$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(loadTVShowDetail),
-      mergeMap((action) =>
-        this.tmdbService.getDetailTVShow(action.id).pipe(
-          map((detail) => loadMovieDetailSuccess({ payload: detail })),
-          catchError(() => of(loadTVShowsError()))
-        )
-      )
     )
   );
 }

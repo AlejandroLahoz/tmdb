@@ -2,43 +2,13 @@ import { createReducer, on } from '@ngrx/store';
 import {
   loadMovieDetail,
   loadMovieDetailSuccess,
-  loadMovies,
-  loadMoviesSuccess,
   loadTVShowDetail,
   loadTVShowDetailSuccess,
-  loadTVShows,
-  loadTVShowsSuccess,
-} from './data.actions';
-import { intialState } from './data.state';
+} from './detail.actions';
+import { intialState } from './detail.state';
 
-export const dataReducer = createReducer(
+export const detailReducer = createReducer(
   intialState,
-  on(loadMovies, (state) => {
-    return {
-      ...state,
-      loadingListMovieStatus: 'pending',
-    };
-  }),
-  on(loadTVShows, (state) => {
-    return {
-      ...state,
-      loadingListTVShowStatus: 'pending',
-    };
-  }),
-  on(loadMoviesSuccess, (state, action) => {
-    return {
-      ...state,
-      loadingListMovieStatus: 'success',
-      listMovie: action.payload,
-    };
-  }),
-  on(loadTVShowsSuccess, (state, action) => {
-    return {
-      ...state,
-      loadingListTVShowStatus: 'success',
-      listTVShow: action.payload,
-    };
-  }),
   on(loadMovieDetail, (state) => {
     return {
       ...state,
