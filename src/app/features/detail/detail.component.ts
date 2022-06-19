@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { filter } from 'rxjs';
+import { filter, Subject, takeUntil } from 'rxjs';
 import { DetailReqRoot } from 'src/app/shared/interfaces/detail-req';
 import {
   loadMovieDetail,
@@ -17,10 +17,11 @@ type Category = 'movie' | 'tv';
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss'],
 })
-export class DetailComponent implements OnInit {
+export class DetailComponent implements OnInit, OnDestroy {
   detailMovie!: DetailReqRoot;
   category!: Category;
   id: string;
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     private route: ActivatedRoute,
@@ -41,7 +42,10 @@ export class DetailComponent implements OnInit {
       }
       this.store
         .select(getDetail)
-        .pipe(filter((detail) => !!detail))
+        .pipe(
+          filter((detail) => !!detail),
+          takeUntil(this.destroy$)
+        )
         .subscribe((detail) => {
           if (detail) {
             this.detailMovie = detail;
@@ -52,5 +56,10 @@ export class DetailComponent implements OnInit {
 
   public goToDetail(id: number) {
     this.router.navigate(['/detail', this.category, id]);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(false);
+    this.destroy$.unsubscribe();
   }
 }
