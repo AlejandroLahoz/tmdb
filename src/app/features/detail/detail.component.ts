@@ -58,6 +58,10 @@ export class DetailComponent implements OnInit, OnDestroy {
     this.router.navigate(['/detail', this.category, id]);
   }
 
+  changeSource(event: any) {
+    event.target.src = 'assets/images/undefined.jpg';
+  }
+
   ngOnDestroy(): void {
     this.destroy$.next(false);
     this.destroy$.unsubscribe();
