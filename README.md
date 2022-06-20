@@ -6,10 +6,10 @@ This project has been developed by using Angular 14 and Redux for the state mana
 
 ## Deployment
 
-First of all, install the dependencies
+First of all, install the dependencies (Redux does not support Angular 14, so force it!)
 
 ```bash
-  npm i
+  npm i --force
 ```
 
 Afterwards, deploy 🚀
