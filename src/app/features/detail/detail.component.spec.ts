@@ -35,7 +35,7 @@ describe('DetailComponent', () => {
     overview: 'Awesome film',
   } as DetailReqRoot;
   const initialState = {
-    data: {
+    detail: {
       detail: mockDetail,
     },
   };
@@ -113,5 +113,15 @@ describe('DetailComponent', () => {
       component.category,
       idToNavigate,
     ]);
+  });
+
+  it('should changeSource', () => {
+    const mockEvent = {
+      target: {
+        src: 'imageNotFound.jpg',
+      },
+    };
+    component.changeSource(mockEvent);
+    expect(mockEvent.target.src).toEqual('assets/images/undefined.jpg');
   });
 });

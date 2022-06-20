@@ -1,7 +1,10 @@
 <mat-card class="card">
   <mat-card-title class="title">{{ title }}</mat-card-title>
   <mat-card-content class="content">
-    <img [src]="'https://image.tmdb.org/t/p/w220_and_h330_face' + poster" />
+    <img
+      [src]="'https://image.tmdb.org/t/p/w220_and_h330_face' + poster"
+      (error)="changeSource($event)"
+    />
     <p class="overview">{{ overview }}</p>
   </mat-card-content>
   <mat-card-actions class="actions">

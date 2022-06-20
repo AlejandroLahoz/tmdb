@@ -22,6 +22,7 @@
     <div class="poster">
       <img
         [src]="'https://image.tmdb.org/t/p/w500' + detailMovie.poster_path"
+        (error)="changeSource($event)"
       />
     </div>
     <div class="information">
@@ -103,7 +104,10 @@
       </mat-list>
     </div>
   </div>
-  <div class="recommendations" *ngIf="detailMovie.recommendations">
+  <div
+    class="recommendations"
+    *ngIf="detailMovie.recommendations?.results?.length"
+  >
     <span class="title">Recommendations</span>
     <div class="cards">
       <app-card

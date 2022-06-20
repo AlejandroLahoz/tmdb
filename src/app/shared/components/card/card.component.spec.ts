@@ -30,4 +30,14 @@ describe('CardComponent', () => {
     component.onDetailClicked();
     expect(spy).toHaveBeenCalledWith(1);
   });
+
+  it('should changeSource', () => {
+    const mockEvent = {
+      target: {
+        src: 'imageNotFound.jpg',
+      },
+    };
+    component.changeSource(mockEvent);
+    expect(mockEvent.target.src).toEqual('assets/images/undefined.jpg');
+  });
 });

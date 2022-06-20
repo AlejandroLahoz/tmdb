@@ -20,4 +20,8 @@ export class CardComponent {
   onDetailClicked() {
     this.detailClicked.emit(this.id);
   }
+
+  changeSource(event: any) {
+    event.target.src = 'assets/images/undefined.jpg';
+  }
 }
