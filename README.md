@@ -51,3 +51,6 @@ To run tests, run the following command
 - Store by features
 
   ![alt text](https://i.ibb.co/zxnF0V1/code.png)
+
+- Not found image
+  ![alt text](https://i.ibb.co/YZFjRZx/notfound.jpg)
